@@ -1,0 +1,31 @@
+Architecture:
+-------------
+
+I have created three model classes: Money, InterestRate and MoneyException:
+1. Money represents monetary amount (here: GBP amount) and is a thin wrapper above standard JDK BigDecimal class.
+It was introduced for the sake of code clarity. 
+As an alternative I could have used Money class from Joda Time library. 
+In future versions of Java (probably beyond 9) there will be standard Java Money and Currency API (JSR-00354) included in JDK.
+2. InterestRate is a "static class" that incorporates business logic. 
+In this case it calculates interest rate (between 0.01 and 0.05 inclusively) based on invested amount. 
+3. MoneyException is a domain exception thrown when incorrect monetary amount is supplied (e.g. null).
+
+There is also one application class I have created - Calculator. 
+It provides one method that returns capital + interest after one year based on invested amount.
+
+I have created unit tests for each application and model class. 
+
+
+Additional assumptions:
+-----------------------
+- Negative monetary values (also known as debt) are not supported. If such values are supplied, MoneyException is being thrown.
+- Monetary values are not rounded. There was no requirement, to round them.
+- Only one currency (GBP) is supported  but not displayed in returned value.
+- Interest rates ranges are upper bound open  (i.e. GBP 1000 is brings 1.5%  interest rate p.a.)
+
+
+I have striven to make code as portable as possible. However, for the record my development environment was as follows:
+- OS: MS Windows 7 x64
+- JDK: Oracle HotSpot 1.7.0_80 x64
+- IDE: Eclipse Mars.1 (4.5.1) x64
+- Build tool: Apache Maven 3.3.3

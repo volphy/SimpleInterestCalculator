@@ -1,0 +1,4 @@
+pl\krzysztofwilk\calculator\application\Calculator.class
+pl\krzysztofwilk\calculator\model\InterestRate.class
+pl\krzysztofwilk\calculator\model\MoneyException.class
+pl\krzysztofwilk\calculator\model\Money.class
